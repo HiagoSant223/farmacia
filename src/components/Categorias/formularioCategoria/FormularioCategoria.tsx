@@ -36,26 +36,26 @@ function FormularioCategoria(){
         console.log(JSON.stringify(categoria))
       }
 
-      async function gerarNovoTema(e: ChangeEvent<HTMLFormElement>) {
+      async function gerarNovaCategoria(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
       
         if (id !== undefined) {
           try {
-            await atualizar(`/temas`, categoria, setCategoria);
-            alert('Tema atualizado com sucesso!');
+            await atualizar(`/categorias`, categoria, setCategoria);
+            alert('Categoria atualizado com sucesso!');
 
             retornar()
 
           } catch (error: any) {
-            alert('Erro ao atualizar o Tema');
+            alert('Erro ao atualizar o Categoria');
           }
         } else {
           try {
-            await cadastrar(`/temas`, categoria, setCategoria);
-            alert('Tema cadastrado com sucesso');
+            await cadastrar(`/categorias`, categoria, setCategoria);
+            alert('Categoria cadastrada com sucesso');
 
           } catch (error: any) {
-            alert('Erro ao cadastrar o Tema');
+            alert('Erro ao cadastrar o Categoria');
           }
         }
       
@@ -69,12 +69,12 @@ function FormularioCategoria(){
       return (
         <div className="container flex flex-col items-center justify-center mx-auto">
           <h1 className="text-4xl text-center my-8">
-            {id === undefined ? 'Cadastre um novo tema' : 'Editar tema'}
+            {id === undefined ? 'Cadastre uma nova categoria' : 'Editar categoria'}
           </h1>
     
-          <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
+          <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovaCategoria}>
             <div className="flex flex-col gap-2">
-              <label htmlFor="descricao">Descrição do tema</label>
+              <label htmlFor="descricao">Descrição da categoria</label>
               <input
                 type="text"
                 placeholder="Descrição"
